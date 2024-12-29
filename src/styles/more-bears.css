@@ -1,0 +1,44 @@
+.more-bears {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0eddb;
+    border-radius: 8px;
+  }
+  
+  .more-bears h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .bears-grid {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px; /* Add spacing between items */
+    align-items: center; /* Center the items horizontally (optional) */
+  }
+  
+  .bear-card {
+    width: 100%; /* Optional: adjust width to fit container */
+    max-width: 400px; /* Optional: limit the max width of the cards */
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .bear-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .bear-card img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .bear-card p {
+    font-size: 1.4rem;
+    margin-top: 10px;
+  }
+  

@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
     "@vitest/coverage-v8": "^2.1.2",
@@ -37,6 +39,9 @@
     ]
   },
   "dependencies": {
-    "jsdom": "^25.0.1"
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

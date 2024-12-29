@@ -1,5 +1,5 @@
-import { showOrHideComments, addingComments } from './comments';
-import { extractBears } from './extractBears';
+/* import { showOrHideComments, addingComments } from './components/comments';
+import { extractBears } from './components/BearList';
 showOrHideComments();
 addingComments();
 
@@ -30,3 +30,4 @@ async function getBearData() {
 }
 // Fetch and display the bear data
 getBearData();
+*/
