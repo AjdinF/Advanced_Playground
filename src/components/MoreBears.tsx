@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { extractBears } from '../utils/extractBears';
 import '../styles/more-bears.css';
 
 interface Bear {
@@ -16,27 +15,14 @@ const MoreBears: React.FC = () => {
 
   useEffect(() => {
     const fetchBearData = async () => {
-      const baseUrl = 'https://en.wikipedia.org/w/api.php';
-      const title = 'List_of_ursids';
-      const params = {
-        action: 'parse',
-        page: title,
-        prop: 'wikitext',
-        section: String(3),
-        format: 'json',
-        origin: '*',
-      };
-      const url = `${baseUrl}?${new URLSearchParams(params).toString()}`;
-
       try {
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+        // Replace Wikipedia API with your backend
+        const response = await fetch('http://localhost:5000/api/bears');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await res.json();
-        const wikitext = data.parse.wikitext['*'];
-        const extractedBears = await extractBears(wikitext);
-        setBears(extractedBears);
+        const data = await response.json();
+        setBears(data); // Set the bear data from backend
       } catch (err: any) {
         console.error(err.message);
         setError('Failed to fetch bear data. Please try again later.');
