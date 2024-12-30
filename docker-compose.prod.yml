@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: dockerfile.frontend
+      target: production
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dockerfile.backend
+      target: production
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production

@@ -1,4 +1,4 @@
-const baseUrl = 'https://en.wikipedia.org/w/api.php';
+import fetch from 'node-fetch';
 
 interface ImageInfo {
   url: string;
@@ -17,8 +17,9 @@ interface WikipediaResponse {
 }
 
 export const fetchImageUrl = async (fileName: string): Promise<string> => {
+  const baseUrl = 'https://en.wikipedia.org/w/api.php';
+
   const fileTitle = fileName.startsWith('File:') ? fileName.trim() : `File:${fileName.trim()}`;
-  
   const imageParams = {
     action: 'query',
     titles: fileTitle,
@@ -33,19 +34,33 @@ export const fetchImageUrl = async (fileName: string): Promise<string> => {
   try {
     const res = await fetch(url);
     if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+      return '/media/placeholder.jpg';
     }
 
-    const data: WikipediaResponse = await res.json();
+    // Parse JSON response and validate structure
+    const jsonData = await res.json();
+    if (!isWikipediaResponse(jsonData)) {
+      return '/media/placeholder.jpg';
+    }
+
+    const data: WikipediaResponse = jsonData;
     const pages = data.query.pages;
     const page = Object.values(pages)[0];
 
-    if (page && page.imageinfo && page.imageinfo[0]) {
-      return page.imageinfo[0].url;
-    } else {
-      return '/media/placeholder.jpg';
-    }
-  } catch (error) {
+    return page?.imageinfo?.[0]?.url || '/media/placeholder.jpg';
+  } catch {
     return '/media/placeholder.jpg';
   }
 };
+
+// Type guard to validate the structure of the API response
+function isWikipediaResponse(data: any): data is WikipediaResponse {
+  return (
+    data &&
+    typeof data === 'object' &&
+    data.query &&
+    typeof data.query === 'object' &&
+    data.query.pages &&
+    typeof data.query.pages === 'object'
+  );
+}
