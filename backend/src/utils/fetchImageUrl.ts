@@ -37,7 +37,6 @@ export const fetchImageUrl = async (fileName: string): Promise<string> => {
       return '/media/placeholder.jpg';
     }
 
-    // Parse JSON response and validate structure
     const jsonData = await res.json();
     if (!isWikipediaResponse(jsonData)) {
       return '/media/placeholder.jpg';
@@ -53,7 +52,6 @@ export const fetchImageUrl = async (fileName: string): Promise<string> => {
   }
 };
 
-// Type guard to validate the structure of the API response
 function isWikipediaResponse(data: any): data is WikipediaResponse {
   return (
     data &&

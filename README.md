@@ -211,6 +211,23 @@ Submit your coding repository link in Moodle. Send me an invitation to your repo
 > 
 > GitLab: leon.freudenthaler@fh-campuswien.ac.at
 
+> Wie starten:
+Docker:
+  * Development: `docker-compose -f docker-compose.yml up --build`
+     * Backend unter localhost:5000  
+     * Frontend unter localhost:5173
+  * Production: `docker-compose -f docker-compose.prod.yml up --build`
+     * Backend unter localhost:5000
+     * Frontend unter localhost:80
+
+Ohne Docker:
+  * Backend (im Backend Ordner im Terminal ausführen):
+     * Development: npm run dev
+     * Build:       npm start
+  * Frontend (bei mir ist das Frontend auf derselben Ebene wie README.md, daher hier im Terminal ausführen):
+     * Development: npm run dev
+     * Build: npm start
+
 ## 5. Migrate to a Frontend Framework (10 pts.)
 In this playground you will migrate your application to a frontend framework of your choice.
 

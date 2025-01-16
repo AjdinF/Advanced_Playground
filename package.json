@@ -12,7 +12,8 @@
     "format:check": "prettier --check 'src/**/*.{js,ts}'",
     "prepare": "husky",
     "test": "vitest --run",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "start": "serve dist"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",

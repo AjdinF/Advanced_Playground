@@ -1,10 +1,9 @@
 const baseUrl = 'https://en.wikipedia.org/w/api.php';
-// Define types for the image response
 interface ImageInfo {
   url: string;
 }
 interface Page {
-  imageinfo?: ImageInfo[]; // imageinfo is optional
+  imageinfo?: ImageInfo[];
 }
 
 export const fetchImageUrl = async (fileName: string): Promise<string | undefined> => {
@@ -22,7 +21,7 @@ export const fetchImageUrl = async (fileName: string): Promise<string | undefine
   try {
     const res = await fetch(url);
     const data = await res.json();
-    const pages: Record<string, Page> = data.query.pages; //Use defined Page type
+    const pages: Record<string, Page> = data.query.pages;
     const page = Object.values(pages)[0];
 
     if (page && page.imageinfo && page.imageinfo[0]) {
@@ -30,7 +29,7 @@ export const fetchImageUrl = async (fileName: string): Promise<string | undefine
       return imageUrl;
     } else {
       console.error('Image information not available');
-      return undefined; // Handle the error
+      return undefined;
     }
   } catch (error) {
     console.error('Error fetching image URL:', error);

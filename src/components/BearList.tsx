@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// Define the type for a bear
 interface Bear {
   type: string;
   coat: string;
@@ -8,7 +7,7 @@ interface Bear {
   habitat: string;
   lifespan: string;
   diet: string;
-  image: string; // Optional if you have images
+  image: string;
 }
 
 const BearList: React.FC = () => {
@@ -16,11 +15,10 @@ const BearList: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating a fetch call to get bear data
     const fetchBears = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/bears'); // Replace with your actual API endpoint
+        const response = await fetch('/api/bears');
         const data: Bear[] = await response.json();
         setBears(data);
       } catch (error) {

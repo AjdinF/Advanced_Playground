@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import bearRoutes from './routes/bears';
+import bearRoutes from './routes/bears.js';
 
 const app = express();
 

@@ -16,13 +16,12 @@ const MoreBears: React.FC = () => {
   useEffect(() => {
     const fetchBearData = async () => {
       try {
-        // Replace Wikipedia API with your backend
         const response = await fetch('http://localhost:5000/api/bears');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setBears(data); // Set the bear data from backend
+        setBears(data);
       } catch (err: any) {
         console.error(err.message);
         setError('Failed to fetch bear data. Please try again later.');

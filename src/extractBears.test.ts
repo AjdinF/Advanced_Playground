@@ -2,14 +2,11 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { extractBears } from './extractBears';
 import { JSDOM } from 'jsdom';
 
-
-// Mock fetchImageUrl to return a specific value instead of making actual API calls
 vi.mock('./fetchImageUrl', () => ({
   fetchImageUrl: vi.fn().mockResolvedValue('https://example.com/bear_image.jpg'),
 }));
 
 describe('extractBears', () => {
-  // Set up JSDOM to simulate the browser environment
   beforeEach(() => {
     const dom = new JSDOM(`<!DOCTYPE html><html><body><div class="more_bears"></div></body></html>`);
     global.document = dom.window.document;
@@ -23,7 +20,6 @@ describe('extractBears', () => {
 
     await extractBears(mockWikitext);
 
-    // Check if the bears are extracted correctly
     const moreBearsSection = document.querySelector('.more_bears');
     expect(moreBearsSection?.innerHTML).toContain('Polar bear');
     expect(moreBearsSection?.innerHTML).toContain('Ursus maritimus');
@@ -39,8 +35,7 @@ describe('extractBears', () => {
 
     await extractBears(mockWikitext);
 
-    // Check if the DOM was NOT updated due to missing image
     const moreBearsSection = document.querySelector('.more_bears');
-    expect(moreBearsSection?.innerHTML).toBe(''); // No bear should be added since image is missing
+    expect(moreBearsSection?.innerHTML).toBe('');
   });
 });

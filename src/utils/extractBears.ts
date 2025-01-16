@@ -1,6 +1,5 @@
 import { fetchImageUrl } from '../utils/fetchImageUrl';
 
-// Function to extract bear data from the wikitext
 export async function extractBears(wikitext: string) {
   const speciesTables = wikitext.split('{{Species table/end}}');
   const bears = [];
@@ -22,8 +21,8 @@ export async function extractBears(wikitext: string) {
           const bear = {
             name: nameMatch[1],
             binomial: binomialMatch[1],
-            image: imageUrl || 'https://via.placeholder.com/200', // Fallback to placeholder
-            range: rangeMatch ? rangeMatch[1] : 'Unknown', // Handle potential null
+            image: imageUrl || 'https://via.placeholder.com/200',
+            range: rangeMatch ? rangeMatch[1] : 'Unknown',
           };
           bears.push(bear);
         } catch (error) {
@@ -31,7 +30,7 @@ export async function extractBears(wikitext: string) {
           bears.push({
             name: nameMatch[1],
             binomial: binomialMatch[1],
-            image: 'https://via.placeholder.com/200', // Fallback in case of an error
+            image: 'https://via.placeholder.com/200',
             range: rangeMatch ? rangeMatch[1] : 'Unknown',
           });
         }
@@ -39,5 +38,5 @@ export async function extractBears(wikitext: string) {
     }
   }
 
-  return bears; // Return the array of bears
+  return bears;
 }

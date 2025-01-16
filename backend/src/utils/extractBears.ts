@@ -1,4 +1,4 @@
-import { fetchImageUrl } from './fetchImageUrl';
+import { fetchImageUrl } from './fetchImageUrl.js';
 
 interface Bear {
   name: string;

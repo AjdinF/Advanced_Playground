@@ -12,14 +12,14 @@
   
   .bears-grid {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    gap: 20px; /* Add spacing between items */
-    align-items: center; /* Center the items horizontally (optional) */
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
   
   .bear-card {
-    width: 100%; /* Optional: adjust width to fit container */
-    max-width: 400px; /* Optional: limit the max width of the cards */
+    width: 100%;
+    max-width: 400px;
     text-align: center;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -41,4 +41,3 @@
     font-size: 1.4rem;
     margin-top: 10px;
   }
-  

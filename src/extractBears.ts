@@ -1,6 +1,5 @@
 import { fetchImageUrl } from './fetchImageUrl';
 
-// Function to extract bear data from the wikitext
 export async function extractBears(wikitext: string) {
     const speciesTables = wikitext.split('{{Species table/end}}');
     const bears = [];
@@ -16,7 +15,6 @@ export async function extractBears(wikitext: string) {
         if (nameMatch && binomialMatch && imageMatch) {
           const fileName = imageMatch[1].trim().replace('File:', '');
           
-          // Fetch the image URL and handle the bear data
           try {
             const imageUrl = await fetchImageUrl(fileName);
             
@@ -24,7 +22,7 @@ export async function extractBears(wikitext: string) {
                 name: nameMatch[1],
                 binomial: binomialMatch[1],
                 image: imageUrl,
-                range: rangeMatch ? rangeMatch[1] : 'Unknown' // Handle potential null
+                range: rangeMatch ? rangeMatch[1] : 'Unknown'
               };
               bears.push(bear);
           } 
@@ -32,7 +30,6 @@ export async function extractBears(wikitext: string) {
             console.error(error);
           }
   
-          // Only update the UI after all bears are processed
           const moreBearsSection = document.querySelector<HTMLElement>('.more_bears');
           if (moreBearsSection) {
             bears.forEach((bear) => {
